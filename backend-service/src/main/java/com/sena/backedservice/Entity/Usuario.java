@@ -47,11 +47,11 @@ public class Usuario extends BaseModel {
 	@Schema(description = "Correo electrónico de la persona", required = true, maxLength = 30)
 	private String correo;
 	
-	@Column(name = "contrasenia", nullable = false, length = 30, unique = true)
+	@Column(name = "contrasenia", nullable = false, length = 30)
 	@Schema(description = "Correo electrónico de la persona", required = true, maxLength = 30)
 	private String contrasenia;
 	
-	@Column(name = "tipo", nullable = false, length = 30, unique = true)
+	@Column(name = "tipo", nullable = false, length = 30)
 	@Schema(description = "Correo electrónico de la persona", required = true, maxLength = 30)
 	private String tipo;
 

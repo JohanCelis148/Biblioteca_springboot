@@ -18,7 +18,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long>{
 			+ " 	usuario "
 			+ " WHERE documento = :documento "
 			+ " OR nombre = :nombre ", nativeQuery = true)
-    Optional<IUsuarioDto> getValidate(String document, String nombre);
+    Optional<IUsuarioDto> getValidate(String documento, String nombre);
 
 	@Query(value = " SELECT  "		
 			+ "  u.estado estado, "

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="../../Asset/Css/View/Security/Person.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Agregar jquery -->
+    <script src="../../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
+
+    <script src="../../Js/View/Security/Person.js"></script>
+    <title>Persons | Spa</title>
+</head>
+
+<body>
+    <div class="container">
+        <form name="formData" id="formData">
+            <div id="headData" class="headData">
+                <h2>Registro Usuarios</h2>
+            </div>
+
+            <div id="bodyData" class="bodyData">
+                <input type="hidden" name="id" id="id" value="">
+                <div class="form-group">
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Tipo documento</label><br>
+                        <select class="form-select" id="tipodocumento" name="tipodocumento">
+                            <!-- data result database -->
+                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
+                            <option value="CC">CC</option>
+                            <option value="TI">TI</option>
+                            <option value="PP">PE</option>
+                            <option value="CE">CE</option>
+                            <option value="DNI">DNI</option>
+                        </select>
+                    </div>
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Número de documento</label><br>
+                        <input type="number" class="form-control" name="documento" id="documento" aria-describedby="" placeholder="Digite el número de documento">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Nombre</label><br>
+                        <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="" placeholder="Digite el primer nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Apellido</label><br>
+                        <input type="text" class="form-control" name="apellido" id="apellido" aria-describedby="" placeholder="Digite el segundo nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Edad</label><br>
+                        <input type="number" class="form-control" name="edad" id="edad" aria-describedby="" placeholder="Digite la edad">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Género</label><br>
+                        <select class="form-select" id="genero" name="genero">
+                            <!-- data result database -->
+                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
+                            <option value="1">Masculino</option>
+                            <option value="0">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Correo Electrónico</label><br>
+                        <input type="text" class="form-control" name="correo" id="correo" aria-describedby="" placeholder="Digite el correo electrónico">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Contraseña</label><br>
+                        <input type="password" class="form-control" name="contrasenia" id="contrasenia" aria-describedby="" placeholder="Digite el segundo nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Tipo</label><br>
+                        <select class="form-select" id="tipo" name="tipo">
+                            <!-- data result database -->
+                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
+                            <option value="admin">Administrador</option>
+                            <option value="cliente">Cliente</option>
+                        </select>
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Celular</label><br>
+                        <input type="number" class="form-control" name="telefono" id="telefono" aria-describedby="" placeholder="Digite el numero de teléfono">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Dirección</label><br>
+                        <input type="text" class="form-control" name="direccion" id="direccion" aria-describedby=""
+                        placeholder="Ejemplo: (Calle 12a #20 -30)">
+                    </div>
+
+                    <div class="campos">
+                        <label for="" class="form-label mt-2">Estado</label><br>
+                        <select class="form-select" id="estado" name="estado">
+                            <!-- data result database -->
+                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="buttonData" class="buttonData">
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()">Agregar</button>
+        <button type="button" id="btnUpdate" name="btnUpdate" class="btn btn-success" onclick="Update()">Modificar</button>
+        <!-- <button type="button" id="btnConsult" name="btnConsult" class="btn btn-warning" onclick="Consult()">Consultar</button> -->
+    </div>
+
+    <div id="resultData" class="resultData">
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th>Tipo Documento</th>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Género</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>
+                    <th>Tipo</th>
+                    <th>Celular</th>
+                    <th>Dirección</th>
+                    <th>Estado</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="dataResult">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div id="footerData" class="">
+
+    </div>
+    </form>
+    </div>
+</body>
+
+<script>
+    loadTable();
+</script>
+
+</html>
