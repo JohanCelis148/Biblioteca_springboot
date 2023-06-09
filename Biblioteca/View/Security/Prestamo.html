@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel="stylesheet" href="../../Asset/Css/View/Security/User.css">
-    <script src="../../Js/View/Security/User.js"></script>
+    <link rel="stylesheet" href="../../Asset/Css/View/Security/Prestamo.css">
+    <script src="../../Js/View/Security/Prestamo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Agregar jquery -->
     <script src="../../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
@@ -19,7 +19,7 @@
     <div class="container">
         <form name="formData" id="formData">
             <div id="headData" class="headData">
-                <h2>Usuarios</h2>
+                <h2>Registrar Prestamo</h2>
             </div>
 
             <div id="bodyData" class="bodyData">
@@ -27,14 +27,14 @@
                 <div class="form-group">
                     
                     <div class="campos">
-                        <label for="" class="form-label mt-2">Usuario asociado</label><br>
+                        <label for="" class="form-label mt-2">Usuario</label><br>
                         <select class="form-select" id="usuarioId" name="usuarioId">
                             <!-- data result database -->
                         </select>
                     </div>
                     
                     <div class="campos">
-                        <label for="" class="form-label mt-2">Libro asociado</label><br>
+                        <label for="" class="form-label mt-2">Libro</label><br>
                         <select class="form-select" id="libroId" name="libroId">
                             <!-- data result database -->
                         </select>
@@ -42,12 +42,12 @@
 
                     <div class="campos">
                         <label for="" class="form-label mt-2 ">Fecha Prestamo</label><br>
-                        <input type="date" class="form-control codigo" name="fechaprestamo" id="fechaprestamo" aria-describedby="" placeholder="Digite el usuario">
+                        <input type="date" class="form-control codigo" name="fechaprestamo" id="fechaprestamo" aria-describedby="" >
                     </div>
 
                     <div class="campos">
                         <label for="" class="form-label mt-2">Fecha entrega</label><br>
-                        <input type="date" class="form-control" name="fechaentrega" id="fechaentrega" aria-describedby="" placeholder="Digite la contraseña" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                        <input type="date" class="form-control" name="fechaentrega" id="fechaentrega" aria-describedby="" >
                     </div>
 
                     <div class="campos">
@@ -64,7 +64,7 @@
     </div>
 
     <div id="buttonData" class="buttonData">
-        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()">Agregar</button>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()">Registrar</button>
         <button type="button" id="btnUpdate" name="btnUpdate" class="btn btn-success" onclick="Update()">Modificar</button>
         <!-- <button type="button" id="btnConsult" name="btnConsult" class="btn btn-warning" onclick="Consult()">Consultar</button> -->
     </div>
@@ -73,9 +73,11 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-primary">
-                    <th>Persona asociada</th>
                     <th>Usuario</th>
-                    <th>Contraseña</th>
+                    <th>Libro</th>
+                    <th>Fecha Prestamo</th>
+                    <th>Fecha Entrega</th>
+                    <th>Total Pagar</th>
                     <th>Estado</th>
                     <th colspan="2">Opciones</th>
                 </tr>

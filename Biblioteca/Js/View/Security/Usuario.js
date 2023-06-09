@@ -2,22 +2,31 @@
 // Busqueda por id
 function findById(id) {
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/userRole/' + id,
+        url: 'http://localhost:9000/backed-service/api/security/usuario/' + id,
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).done(function (item) {
         $("#id").val(item.id)
-        $("#roleId").val(item.roleId.id)
-        $("#userId").val(item.userId.id)
-        $("#state").val(item.state==true?'1':'0')      
+        $("#tipodocumento").val(item.tipoDocumento)
+        $("#documento").val(item.documento)
+        $("#nombre").val(item.nombre)
+        $("#apellido").val(item.apellido)
+        $("#edad").val(item.edad)
+        $("#genero").val(item.genero==true?'1':'0')
+        $("#correo").val(item.correo)
+        $("#contrasenia").val(item.contrasenia)
+        $("#tipo").val(item.tipo)
+        $("#telefono").val(item.celular)
+        $("#direccion").val(item.direccion)
+        $("#estado").val(item.estado==true?'1':'0')      
     })
 }
 
 function loadTable() {
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/userRole',
+        url: 'http://localhost:9000/backed-service/api/security/usuario',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -28,9 +37,18 @@ function loadTable() {
             registros += `
 
                         <tr class="table-light">
-                            <td>`+item.roleId.description+`</td>
-                            <td>`+item.userId.user+`</td>
-                            <td>`+(item.state==true?'Activo':'Inactivo')+`</td>
+                            <td>`+item.tipoDocumento+`</td>
+                            <td>`+item.documento+`</td>
+                            <td>`+item.nombre+`</td>
+                            <td>`+item.apellido+`</td>
+                            <td>`+item.edad+`</td>
+                            <td>`+(item.genero==true?'Masculino':'Femenino')+`</td>
+                            <td>`+item.correo+`</td>
+                            <td>**********</td>
+                            <td>`+item.tipo+`</td>
+                            <td>`+item.celular+`</td>
+                            <td>`+item.direccion+`</td>
+                            <td>`+(item.estado==true?'Activo':'Inactivo')+`</td>
                             <td><button class="btnEdit" type="button" onclick="findById(`+item.id+`);"><i class="fi fi-rr-pencil"></i></button></td>
                             <td><button class="btnDelete" type="button" onclick="deleteById(`+item.id+`);"><i class="fi fi-rr-trash"></i></button></td>
                         </tr>
@@ -43,7 +61,7 @@ function loadTable() {
 //Accion para eliminar un registro seleccionado 
 function deleteById(id){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/userRole/' + id,
+        url: 'http://localhost:9000/backed-service/api/security/usuario/' + id,
         method: "delete",
         headers: {
             "Content-Type": "application/json"
@@ -53,7 +71,7 @@ function deleteById(id){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -63,7 +81,7 @@ function deleteById(id){
           
         Toast.fire({
             icon: 'error',
-            title: 'Eliminado exitoso',
+            title: 'Persona eliminada',
         });
         loadTable();
     })
@@ -73,23 +91,27 @@ function deleteById(id){
 //Accion de adicionar un registro
 function Add(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/userRole',
+        url: 'http://localhost:9000/backed-service/api/security/usuario',
         data: JSON.stringify({
-            roleId: {
-                id:$("#roleId").val()
-            },
-            userId: {
-                id:$("#userId").val()
-            },  
-            state: parseInt($("#state").val()),
-            userCreationId: 1,
-            dateCreation: new Date()
+            tipoDocumento: $("#tipodocumento").val(),
+            documento: $("#documento").val(),
+            nombre: $("#nombre").val(),
+            apellido: $("#apellido").val(),
+            edad: parseInt($("#edad").val()),
+            genero: parseInt($("#genero").val()),
+            correo: $("#correo").val(),
+            contrasenia: $("#contrasenia").val(),
+            tipo: $("#tipo").val(),
+            celular: $("#telefono").val(),
+            direccion: $("#direccion").val(),
+            estado: parseInt($("#estado").val())
         }),
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+
         //Cargar datos
         loadTable();
 
@@ -100,7 +122,7 @@ function Add(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -111,14 +133,16 @@ function Add(){
         Toast.fire({
             icon: 'success',
             title: 'Registro exitoso',
-        });
+        })
+
+        
     }).fail(function (jqXHR, textStatus, errorThrown) {
         // Si la respuesta es un error
         Swal.fire({
             icon: 'error',
             title: "Error",
             text: jqXHR.responseJSON.message,
-        })    
+        })      
     });
 }
 
@@ -126,19 +150,20 @@ function Add(){
 //Accion de actualizar un registro
 function Update(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/userRole/' + $("#id").val(),
+        url: 'http://localhost:9000/backed-service/api/security/usuario/' + $("#id").val(),
         data: JSON.stringify({
-            roleId: {
-                id:$("#roleId").val()
-            },
-            userId: {
-                id:$("#userId").val()
-            },  
-            state: parseInt($("#state").val()),
-            userCreationId: 1,
-            dateCreation: new Date(),
-            userModificationId: 1,
-            dateModification: new Date()
+            tipoDocumento: $("#tipodocumento").val(),
+            documento: $("#documento").val(),
+            nombre: $("#nombre").val(),
+            apellido: $("#apellido").val(),
+            edad: parseInt($("#edad").val()),
+            genero: parseInt($("#genero").val()),
+            correo: $("#correo").val(),
+            contrasenia: $("#contrasenia").val(),
+            tipo: $("#tipo").val(),
+            celular: $("#telefono").val(),
+            direccion: $("#direccion").val(),
+            estado: parseInt($("#estado").val())
         }),
         method: "PUT",
         headers: {
@@ -155,7 +180,7 @@ function Update(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -166,14 +191,23 @@ function Update(){
         Toast.fire({
             icon: 'warning',
             title: 'Modificación exitosa',
-        });
+        })
     })
 }
 
 // Función para limpiar datos
 function clearData(){
     $("#id").val(""),
-    $("#roleId").val(""),
-    $("#userId").val(""),
-    $("#state").val("")
+    $("#tipodocumento").val(""),
+    $("#documento").val(""),
+    $("#nombre").val(""),
+    $("#apellido").val(""),
+    $("#edad").val(""),
+    $("#genero").val(""),
+    $("#correo").val(""),
+    $("#contrasenia").val(""),
+    $("#tipo").val(""),
+    $("#telefono").val(""),
+    $("#direccion").val(""),
+    $("#estado").val("")
 }

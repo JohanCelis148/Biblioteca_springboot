@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Entidad que representa un usuario en el sistema")
 public class Prestamo extends BaseModel {
 	
-	@Column(name = "fecha_prestamo", nullable = false, unique = true, length = 100)
+	@Column(name = "fecha_prestamo", nullable = false, length = 100)
 	@Schema(description = "Nombre de usuario")
 	private Date fechaPrestamo;
 	
@@ -29,17 +29,17 @@ public class Prestamo extends BaseModel {
 	private Date fechaEntrega;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "usuario_id", nullable = false, unique = true)
+    @JoinColumn(name = "usuario_id", nullable = false)
     @Schema(description = "Identificador del usuario asociada al prestamo")
     private Usuario usuarioId;
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "libro_id", nullable = false, unique = true)
+    @JoinColumn(name = "libro_id", nullable = false)
     @Schema(description = "Identificador el libro asociado al prestamo")
     private Libro libroId;
 	
 	@Column(name = "total_pagar", nullable = false, length = 100)
-	@Schema(description = "Contraseña del usuario")
+	@Schema(description = "Total a pagar por el prestamo")
 	private Integer totalPagar;
 
 	public Date getFechaPrestamo() {

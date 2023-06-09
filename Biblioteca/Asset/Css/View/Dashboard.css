@@ -45,7 +45,7 @@ body {
 }
 
 .sidebar .logo-details .logo_name {
-  color: #fff;
+  color: #000000;
   font-size: 20px;
   font-weight: 600;
   opacity: 0;
@@ -190,7 +190,7 @@ body {
   left: 0;
   transform: translateY(-50%);
   font-size: 23px;
-  background: #00BC79;
+  background: #a8a8a8;
   color: #FFF;
   border-radius: 10px;
   transition: .2s;
@@ -203,13 +203,13 @@ body {
 }
 
 .sidebar.open .fi-rr-search:hover {
-  background: #42E984;
+  background: #afafaf;
   color: #FFF;
   
 }
 
 .sidebar .fi-rr-search:hover {
-  background: #42E984;
+  background: #a7a7a7;
   color: #ffffff;
 }
 
@@ -221,11 +221,11 @@ body {
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
-  background: #00BC79;
+  background: #DC4F02;
 }
 
 .sidebar li a:hover {
-  background: #00AA95;
+  background: #dc4e02de;
   transform: translateY(-3px);
 }
 
@@ -307,7 +307,7 @@ body {
   padding-top: 5px;
   padding-left: 10px;
   transform: translateY(-40%);
-  background: #00BC79;
+  background: #DC4F02;
   width: 100%;
   border-radius: 0;
   height: 70px;

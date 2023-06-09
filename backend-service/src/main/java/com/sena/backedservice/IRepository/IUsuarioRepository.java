@@ -17,15 +17,15 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long>{
 			+ " FROM "
 			+ " 	usuario "
 			+ " WHERE documento = :documento "
-			+ " OR nombre = :nombre ", nativeQuery = true)
-    Optional<IUsuarioDto> getValidate(String documento, String nombre);
+			+ " OR correo = :correo ", nativeQuery = true)
+    Optional<IUsuarioDto> getValidate(String documento, String correo);
 
 	@Query(value = " SELECT  "		
 			+ "  u.estado estado, "
-			+ "  u.correo correo"
+			+ "  u.documento documento"
 			+ "FROM  "
 			+ "	usuario u  "			
 			+ "WHERE  "
-			+ "	u.user = :user AND u.password = :password  AND u.estado = TRUE ", nativeQuery = true)
-Optional<ILoginDto> getLogin(String user, String password);
+			+ "	u.documento = :documento AND u.contrasenia = :contrasenia  AND u.estado = TRUE ", nativeQuery = true)
+Optional<ILoginDto> getLogin(String documento, String contrasenia);
 }

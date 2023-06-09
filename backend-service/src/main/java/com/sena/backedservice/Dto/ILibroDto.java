@@ -22,7 +22,7 @@ public interface ILibroDto {
      *
      * @return la cantidad del modulo
      */
-    Integer getState();
+    Integer getEstado();
     
     /**
      * Obtiene la cantidad del modulo.

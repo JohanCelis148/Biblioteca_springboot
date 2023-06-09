@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Entity
 @Table(name = "libro")
-@Schema(description = "Entidad que representa un modulo en el sistema")
+@Schema(description = "Entidad que representa un libro en el sistema")
 public class Libro extends BaseModel {
 
 	@Column(name = "codigo", nullable = false, unique = true)
