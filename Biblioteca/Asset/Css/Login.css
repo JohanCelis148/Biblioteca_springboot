@@ -13,7 +13,7 @@ body{
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background-color: #42E984;
+    background-color: #cfcfcf;
 }
 
 
@@ -23,24 +23,25 @@ body{
     display: flex;
     width: 80%;
     box-shadow: 11px 13px 15px 1px rgba(0, 0, 0, 0.397);
-    background-color: rgba(170, 170, 170, 0.61);
+    background-color: rgba(255, 255, 255, 0.842);
     z-index: 1;
 }
 
 .img{
     height: 750px;
     width: 750px;
+    border-radius: 15px 500px 500px 15px;
 }
 
 h2{
     margin-bottom: 30px;
     margin-left: 35%;
-    color: #ffffff;
+    color: #000000;
 }
 
 .formulario{
     position: absolute;
-    left: 55%;
+    left: 52%;
     top: 150px;
     width: 35%;
     padding: 100px;
@@ -57,7 +58,7 @@ h2{
 .input-box input:focus~label,
 .input-box input:valid~label{
     top: 5px;
-    color: #ffffff;
+    color: #000000;
     font-size: 20px;
     font-weight: 400;
 }
@@ -95,7 +96,7 @@ h2{
 }
 
 #btnLogin{
-    background: #00B978;
+    background: #dc4f02;
     width: 70%;
     color: white;
     height: 40px;
@@ -110,7 +111,7 @@ h2{
 }
 
 #btnLogin:hover{
-    color: black;
+    color: rgb(223, 223, 223);
     transform: scale(1.02);
 }
 
@@ -118,7 +119,7 @@ h3{
     font-size: 1.08em;
     margin-top: 80px;
     margin-left: 25%;
-    color: #ffffff;
+    color: #000000;
     font-weight: 100;
 }
 

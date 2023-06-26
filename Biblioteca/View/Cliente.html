@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Assets/css/Board.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="../../Js/View/Libreria/PrestamosUsuarios.js"></script>
+    <script src="../../Librerias/node_modules/jquery/dist/jquery.js"></script>
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Biblioteca Checa</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <br>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Bienvenido</h2>
+        <br>
+        <p>Si quieres aventura lánzate a la lectura.</p>
+
+
+        <div id="resultData" class="resultData">
+            <br>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-primary">
+                        <th>Fecha de prestamo</th>
+                        <th>Fecha de entrega</th>
+                        <th>Usuario asociado</th>
+                        <th>Libro asociado</th>
+                        <th>Total a pagar</th>
+                        <th>Estado</th>
+                        <th>Regresar Libro</th>
+                    </tr>
+                </thead>
+                <tbody id="dataResult">
+                    <!-- data result database -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p> <br></p>
+    </footer>
+</body>
+
+</html>
+
+<script>
+    loadTable();
+</script>

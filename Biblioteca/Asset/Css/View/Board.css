@@ -17,11 +17,13 @@ body{
 }
 
 .container .row1{
+    display: flex;
     position: relative;
-    float: right;
+    /* float: right; */
 }
 
 .row1 .col{
+    margin-left: 50px;
     background-color: white;
     width: 100%;
     padding: 20px;
@@ -31,5 +33,5 @@ body{
 }
 
 .row1 .col h1{
-    color: #2ccba1;
+    color: #dc4f02;
 }

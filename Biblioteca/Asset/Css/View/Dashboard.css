@@ -94,7 +94,7 @@ body {
 
 .sidebar.open .nav-list {
   margin-top: 30px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   padding-right: 20px;
   margin-right: -14px;
 }

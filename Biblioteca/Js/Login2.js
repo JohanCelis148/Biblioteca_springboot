@@ -1,40 +1,61 @@
 function Login() {
     let user = document.getElementById('txtuser').value;
     let password = document.getElementById('txtpassword').value;
-    localStorage.setItem('user','user');
-    localStorage.setItem('password','password');
 
+    // Realizar solicitud AJAX para obtener los usuarios del endpoint
+    $.ajax({
+        url: 'http://localhost:9000/backed-service/api/security/usuario',
+        method: 'GET',
+        success: function (response) {
+            // Verificar si el usuario existe y obtener su rol
+            const encontrarUsuario = response.find(item => item.documento === user && item.contrasenia === password);
+            
+            if (encontrarUsuario) {
+                // Almacenar el ID del usuario en el localStorage
+                localStorage.setItem('userId', encontrarUsuario.id);
+                const admin = encontrarUsuario.tipo;
 
-    //Datos de ingreso de la aplicación User: 1234 Pass: 1234
-    if (user == 12 && password ==12) {
-        Swal.fire({
-            icon: 'success',
-            title: 'Bienvenido',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Continuar',
-            denyButtonText: `No continuar`,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                window.location.assign('Dashboard.html');
-            } else if (result.isDenied) {
-                Swal.fire('Se canceló el ingreso', '', 'info')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bienvenido',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Continuar',
+                    denyButtonText: `No continuar`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirigir a diferentes dashboards según el rol del usuario
+                        if (admin == "Administrador") {
+                            window.location.assign('Dashboard.html');
+                        } else {
+                            window.location.assign('Cliente.html');
+                        }
+                    } else if (result.isDenied) {
+                        Swal.fire('Se canceló el ingreso', '', 'info');
+                        Clear();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en la autenticación',
+                    text: 'Revisa que los datos ingresados sean correctos',
+                });
                 Clear();
             }
-        })
-
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error en la autenticación',
-            text: 'Revisa que los datos ingresados son correctos',
-        })
-        Clear();
-    }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al obtener los usuarios',
+                text: 'No se pudo obtener la lista de usuarios',
+            });
+        }
+    });
 }
 
-function SignOut(){
+
+function SignOut() {
     Swal.fire({
         title: '¡Hasta pronto!',
         showDenyButton: true,
@@ -42,21 +63,22 @@ function SignOut(){
         confirmButtonText: 'Cerrar Sesión',
         denyButtonText: `Continuar en la Sesión`,
     }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-            Swal.fire('Saved!', '', 'success')
+            Swal.fire('Saved!', '', 'success');
             window.location.assign('login.html');
         } else if (result.isDenied) {
-            Swal.fire('Se continúa en la sesión', '', 'info')
+            Swal.fire('Se continúa en la sesión', '', 'info');
             Clear();
         }
-    })
+    });
 }
 
 function Clear() {
     document.getElementById('txtuser').value = '';
     document.getElementById('txtPassword').value = '';
 }
+
+
 
 //pintar permiso
 
@@ -88,7 +110,6 @@ function loadPermission(){
                         </div>
                         
                     </div>
-
                     <a id="log_out" name='cerrar' onclick="SignOut()"><i class='bx bx-log-out bx-lg'  ></i></a>
                 </li>
         `;
