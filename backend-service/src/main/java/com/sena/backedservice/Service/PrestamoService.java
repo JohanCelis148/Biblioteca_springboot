@@ -65,5 +65,16 @@ public class PrestamoService implements IPrestamoService {
 	        repository.deleteById(id);
 	}
 
+	@Override
+	public List<Prestamo> findByUsuarioId(Long usuarioId) throws Exception {
+		List<Prestamo> op = repository.getLibrosPrestadosPorUsuario(usuarioId);
+
+        if (op.isEmpty()) {
+            throw new Exception("No se encontraron libros prestados");
+        }
+
+        return op;
+	}
+
 	
 }

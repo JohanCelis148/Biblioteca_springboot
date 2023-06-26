@@ -45,5 +45,8 @@ public interface IPrestamoService {
      * @param id el ID del usuario a eliminar
      */
     public void delete(Long id) throws Exception;
+    
+    
+    public List<Prestamo> findByUsuarioId(Long id) throws Exception;
 
 }

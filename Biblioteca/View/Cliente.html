@@ -5,19 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Assets/css/Board.css">
+    <link rel="stylesheet" href="../Asset/Css/View/Cliente.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <script src="../../Js/View/Libreria/PrestamosUsuarios.js"></script>
-    <script src="../../Librerias/node_modules/jquery/dist/jquery.js"></script>
+    <script src="../Js/Cliente.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Agregar jquery -->
+    <script src="../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
     <!-- Iconos Font Awesome -->
+    <script src="../Js/Login.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Document</title>
 </head>
 
 <body>
     <header>
-        <h1>Biblioteca Checa</h1>
+        <div class="logo_name"><img src="../Asset/Img/libro.png" alt="" style="height: 50px;"></div>
+        <h1>Biblioteca</h1>
+        <a class="log_out" id="log_out" name='cerrar' onclick="SignOut()">Salir <i class="fi fi-rr-exit"></i></a>
+        <br>
+        <hr>
     </header>
 
     <nav>
@@ -29,7 +36,7 @@
     <main>
         <h2>Bienvenido</h2>
         <br>
-        <p>Si quieres aventura lánzate a la lectura.</p>
+        <p>Ahora puedes observar tus prestamos de libros aqui!</p>
 
 
         <div id="resultData" class="resultData">

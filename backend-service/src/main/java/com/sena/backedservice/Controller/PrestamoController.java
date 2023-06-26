@@ -79,4 +79,23 @@ public class PrestamoController {
     public void delete(@PathVariable Long id) throws Exception{
         service.delete(id);
     }
+    
+    
+    @Operation(summary = "Consultar libros de un usuario", responses = {
+            @ApiResponse(responseCode = "200", description = "Libros encontrados"),
+            @ApiResponse(responseCode = "404", description = "Libros no encontrados")
+    })
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<Prestamo>> getLibrosPrestadosPorUsuario(@PathVariable Long usuarioId) {
+        try {
+            List<Prestamo> prestamos = service.findByUsuarioId(usuarioId);
+            if (!prestamos.isEmpty()) {
+                return ResponseEntity.ok(prestamos);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
