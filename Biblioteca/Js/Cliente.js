@@ -11,21 +11,28 @@ function loadTable() {
         }
     }).done(function (items) {
         var registros = "";
+        var data = "";
         items.forEach(function (item, index, array) {
             registros += `
             
                 <tr class="table-light">
                     <td>` + item.fechaPrestamo + `</td>
                     <td>` + item.fechaEntrega + `</td>
-                    <td>` + item.usuarioId.nombre + ` ` + item.usuarioId.apellido + `</td>
                     <td>` + item.libroId.descripcion + `</td>
                     <td>` + item.totalPagar + `</td>
                     <td>` + (item.estado ? 'Activo' : 'Inactivo') + `</td>
                     <td><button class="btnDelete" type="button" onclick="deleteById(` + item.id + `);"><i class="fi fi-rr-trash"></i></button></td>
                 </tr>
             `;
+
+            data += `
+            <h2>HOLA👋 ` + item.usuarioId.nombre + ` ` + item.usuarioId.apellido + `</h2>
+            <br>
+            <p>Ahora puedes observar tus prestamos de libros aqui!</p>
+            `;
         });
         $('#dataResult').html(registros);
+        $('#datos').html(data);
         console.log(items);
     });
 }
